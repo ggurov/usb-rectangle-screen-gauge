@@ -1,0 +1,21 @@
+# Build output
+/build/
+
+# The 2.8" panel's factory flash dump lives beside this repo's checkout only
+# so it is not lost; it belongs to the other project and is not tracked here.
+backup/
+
+# Host tooling
+tools/__pycache__/
+tools/.venv/
+
+# Generated preview images.  The dial renders and the sheet are tracked
+# because README.md embeds them; these are throwaway intermediates.
+tools/preview/*_2x.png
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini

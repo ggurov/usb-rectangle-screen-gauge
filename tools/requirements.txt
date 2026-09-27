@@ -1,0 +1,7 @@
+# Host-side tooling dependencies (development machine only).
+#
+#   python -m pip install -r tools/requirements.txt
+#
+pyusb>=1.2           # tools/usb_screen.py talks to the VoCore screen
+libusb-package>=1.0  # ...and supplies the libusb DLL it loads
+opencv-python>=4.8   # tools/render_usb_preview.py writes the preview PNGs
