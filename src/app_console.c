@@ -256,11 +256,13 @@ static int cmd_gauge_resume(void)
 static int cmd_flush(void)
 {
     uint32_t frames = 0, pixels = 0;
-    uint32_t panel_frames = 0, bytes = 0, errors = 0;
+    uint32_t panel_frames = 0, errors = 0;
+    uint64_t bytes = 0;
     gfx_get_stats(&frames, &pixels);
     bsp_lcd_flush_stats(&panel_frames, &bytes, &errors);
     printf("full frames pushed : %u\n", (unsigned)frames);
-    printf("panel transfers    : %u (%u bytes)\n", (unsigned)panel_frames, (unsigned)bytes);
+    printf("panel transfers    : %u (%llu bytes, %.1f MB)\n", (unsigned)panel_frames,
+           (unsigned long long)bytes, (double)bytes / 1e6);
     printf("errors             : %u\n", (unsigned)errors);
     printf("mode               : %s\n", bsp_display_partial() ? "partial" : "whole frames");
     printf("column offset      : %d px\n", bsp_display_xshift());

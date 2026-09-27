@@ -83,7 +83,7 @@ bool vocore_panel_poll_touch(vocore_panel_t *panel, vocore_touch_t *touch, int t
 
 /* Counters for the console. */
 void vocore_panel_stats(const vocore_panel_t *panel, uint32_t *frames,
-                        uint32_t *bytes, uint32_t *errors);
+                        uint64_t *bytes, uint32_t *errors);
 
 #ifdef __cplusplus
 }

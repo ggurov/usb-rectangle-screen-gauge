@@ -34,7 +34,7 @@ struct vocore_panel {
     uint8_t *roll_buf;      /* only when the panel needs a column offset */
 
     uint32_t frames;
-    uint32_t bytes;
+    uint64_t bytes;   /* 64-bit: a five-minute session is already ~5 GB */
     uint32_t errors;
 
     uint8_t touch_raw[TOUCH_REPORT_LEN];
@@ -311,7 +311,7 @@ bool vocore_panel_show(vocore_panel_t *p, const uint16_t *pixels)
     }
 
     p->frames++;
-    p->bytes += (uint32_t)count;
+    p->bytes += (uint64_t)count;
     return true;
 }
 
@@ -348,7 +348,7 @@ static bool send_partial(vocore_panel_t *p, const void *data, int x, int y, int 
         p->partial = false;
         return false;
     }
-    p->bytes += (uint32_t)bytes;
+    p->bytes += (uint64_t)bytes;
     return true;
 }
 
@@ -473,7 +473,7 @@ bool vocore_panel_poll_touch(vocore_panel_t *p, vocore_touch_t *touch, int timeo
 }
 
 void vocore_panel_stats(const vocore_panel_t *p, uint32_t *frames,
-                        uint32_t *bytes, uint32_t *errors)
+                        uint64_t *bytes, uint32_t *errors)
 {
     if (!p) {
         return;

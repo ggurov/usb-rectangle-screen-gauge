@@ -27,7 +27,7 @@ int bsp_lcd_draw_bitmap(int x0, int y0, int x1, int y1, const uint16_t *pixels);
 
 /* Completed transfers and bytes, for `flush`. */
 uint32_t bsp_lcd_flush_count(void);
-void bsp_lcd_flush_stats(uint32_t *frames, uint32_t *bytes, uint32_t *errors);
+void bsp_lcd_flush_stats(uint32_t *frames, uint64_t *bytes, uint32_t *errors);
 
 /* 0..100, returns false when the panel did not acknowledge. */
 bool bsp_backlight_set(int percent);

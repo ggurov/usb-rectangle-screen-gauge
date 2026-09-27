@@ -71,12 +71,13 @@ int bsp_lcd_draw_bitmap(int x0, int y0, int x1, int y1, const uint16_t *pixels)
 
 uint32_t bsp_lcd_flush_count(void)
 {
-    uint32_t frames = 0, bytes = 0, errors = 0;
+    uint32_t frames = 0, errors = 0;
+    uint64_t bytes = 0;
     vocore_panel_stats(s_panel, &frames, &bytes, &errors);
     return frames;
 }
 
-void bsp_lcd_flush_stats(uint32_t *frames, uint32_t *bytes, uint32_t *errors)
+void bsp_lcd_flush_stats(uint32_t *frames, uint64_t *bytes, uint32_t *errors)
 {
     vocore_panel_stats(s_panel, frames, bytes, errors);
 }

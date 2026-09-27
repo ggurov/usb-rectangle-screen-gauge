@@ -270,7 +270,8 @@ TF_TEST(vocore_panel, full_frame_goes_out_with_the_sdk_header)
     TF_EQ_INT(f.bulk_count, 1);
     TF_EQ_INT(f.bulk_len, FAKE_FRAME);
 
-    uint32_t frames = 0, bytes = 0, errors = 0;
+    uint32_t frames = 0, errors = 0;
+    uint64_t bytes = 0;
     vocore_panel_stats(p, &frames, &bytes, &errors);
     TF_EQ_INT(frames, 1);
     TF_EQ_INT(bytes, FAKE_FRAME);

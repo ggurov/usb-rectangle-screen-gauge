@@ -231,7 +231,8 @@ int main(int argc, char **argv)
         app_sleep_ms(1);
     }
 
-    uint32_t frames = 0, bytes = 0, errors = 0;
+    uint32_t frames = 0, errors = 0;
+    uint64_t bytes = 0;
     bsp_lcd_flush_stats(&frames, &bytes, &errors);
     const double seconds = (double)(app_now_us() - start) / 1e6;
     if (seconds > 0.1) {

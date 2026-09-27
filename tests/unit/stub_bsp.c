@@ -37,10 +37,10 @@ uint32_t bsp_lcd_flush_count(void)
     return s_calls;
 }
 
-void bsp_lcd_flush_stats(uint32_t *frames, uint32_t *bytes, uint32_t *errors)
+void bsp_lcd_flush_stats(uint32_t *frames, uint64_t *bytes, uint32_t *errors)
 {
     if (frames) *frames = s_calls;
-    if (bytes)  *bytes = s_calls * (uint32_t)GFX_W * (uint32_t)GFX_H * 2u;
+    if (bytes)  *bytes = (uint64_t)s_calls * (uint64_t)GFX_W * (uint64_t)GFX_H * 2u;
     if (errors) *errors = 0;
 }
 
